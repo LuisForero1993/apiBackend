@@ -118,7 +118,7 @@ export const deleteOrder = async (req, res) => {
       where: { orderId }
     })
 
-    await prisma.order.delete({ where: { id: orderId } })
+    await prisma.order.delete({ where: { id } })
     res.json({ message: 'Order deleted successfully' })
   } catch (error) {
     console.error('Error al eliminar pedido:', error)
