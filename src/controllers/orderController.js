@@ -108,9 +108,17 @@ export const updateOrder = async (req, res) => {
 
 
 export const deleteOrder = async (req, res) => {
-  const id = parseInt(req.params.id)
+
   try {
-    await prisma.order.delete({ where: { id } })
+    const id = parseInt(req.params.id)
+    const orderId = Number(id)
+
+    // Eliminar primero los detalles del pedido
+    await prisma.orderDetail.deleteMany({
+      where: { orderId }
+    })
+
+    await prisma.order.delete({ where: { id: orderId } })
     res.json({ message: 'Order deleted successfully' })
   } catch (error) {
     console.error('Error al eliminar pedido:', error)
