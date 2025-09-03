@@ -12,7 +12,7 @@ app.use(cors()); // Permite peticiones desde otros orígenes (ej: frontend)
 app.use(express.json()); // Permite recibir JSON desde el frontend
 app.use("/api/orders", orderRoutes); // Prefijo para nuestras rutas
 
-// conectarme a la base de datos
+// conectarme a la base de datos .
 
 connect();
 
